@@ -36,6 +36,7 @@ var friends = [
 		name: 'Yoda',
 		photo: 'https://cdna.artstation.com/p/assets/images/images/005/593/112/large/vincent-chambin-compo-06.jpg?1492274172',
 		scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-	}];
+	}
+];
 
 module.exports = friends;

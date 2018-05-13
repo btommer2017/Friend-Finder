@@ -192,24 +192,24 @@
                 if ($("#userName").val().trim() === '') {
                 alert('Please enter a valid name');
             } else {
-                var userScores = [
-                        parseInt($("#question1").val().substring(0,1)),
-                        parseInt($("#question2").val().substring(0,1)),
-                        parseInt($("#question3").val().substring(0,1)),
-                        parseInt($("#question4").val().substring(0,1)),
-                        parseInt($("#question5").val().substring(0,1)),
-                        parseInt($("#question6").val().substring(0,1)),
-                        parseInt($("#question7").val().substring(0,1)),
-                        parseInt($("#question8").val().substring(0,1)),
-                        parseInt($("#question9").val().substring(0,1)),
-                        parseInt($("#question10").val().substring(0,1))
-                                  ]
+                var scores = [
+                        $("#question1").val().substring(0,1),
+                        $("#question2").val().substring(0,1),
+                        $("#question3").val().substring(0,1),
+                        $("#question4").val().substring(0,1),
+                        $("#question5").val().substring(0,1),
+                        $("#question6").val().substring(0,1),
+                        $("#question7").val().substring(0,1),
+                        $("#question8").val().substring(0,1),
+                        $("#question9").val().substring(0,1),
+                        $("#question10").val().substring(0,1),
+                                 ];
                 
                 //create object for new users info and survey results
                 var newUser = {
                     name: $("#userName").val().trim(),
                     photo: $("#userPic").val().trim(),
-                    userScores
+                    scores
                 };
                 console.log(newUser);
                 var currentURL = window.location.origin;
@@ -218,25 +218,35 @@
                 });
 
 checkScores = function(){
+    totalChecker = [];
     console.log("Currently checking scores");
     $.ajax({url: currentURL + "/api/friends", method: "GET"}).done(function(res){
+        let userNumber = res.length-1
+        console.log(res[0]);
+        console.log(res[1]);
+        console.log(res[2]);
+        console.log(res[userNumber]);
+for (i=0; i< userNumber; i++){
+    console.log("hello world");
+    for (j=0; j < res[i].scores.length; j++){
+        console.log(res[i].name);
+        console.log(res[i].scores[j]);
+        // console.log("Check score #" + j);
+        // console.log(res[i].scores[j] - res[userNumber].userScores[j]);
+    }
+    
+}
 
-        console.log(res);
     })
    }
 checkScores();
-
-
-
-
             }
- // Here we get the location of the root page.
-      // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-      var currentURL = window.location.origin;
-
 
         })
     </script>
 </body>
 
 </html>
+
+
+//var difference = function (a, b) { return Math.abs(a - b); }
