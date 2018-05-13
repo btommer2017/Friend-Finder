@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Friend Finder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="app/public/style.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-size: 50px;">FRIEND FINDER</h1>
+        <hr>
+        <hr>
+        <form role="form" id="userSurvey">
+            <h2>User Information:</h2>
+            <div class="form-group">
+                <label for="usr">Name:</label>
+                <input type="text" class="form-control" id="userName">
+            </div>
+            <div class="form-group">
+                <label for="pic">Photo URL (optional):</label>
+                <input type="text" class="form-control" id="userPic">
+            </div>
+            <hr>
+            <h2>
+                <strong>Provide responses to the following statements:</strong>
+            </h2>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 1</strong>
+                </h3>
+                <h4>You like wookies</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question1">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 2</strong>
+                </h3>
+                <h4>You want to be a sith lord</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question2">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 3</strong>
+                </h3>
+                <h4>You are a good pilot</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question3">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 4</strong>
+                </h3>
+                <h4>You like all alien species</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question4">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 5</strong>
+                </h3>
+                <h4>A rancor would not be a tough match</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question5">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 6</strong>
+                </h3>
+                <h4>You would prefer death via a sarlacc pit vs a light saber wound</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question6">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 7</strong>
+                </h3>
+                <h4>You would steal from Jabba the Hutt if you had the chance</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question7">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 8</strong>
+                </h3>
+                <h4>Your favorite light saber color is green</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question8">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 9</strong>
+                </h3>
+                <h4>You'd rather live on Tatooine instead of the Death Star</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question9">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-md-12 col-lg-12">
+                <h3>
+                    <strong>Answer 10</strong>
+                </h3>
+                <h4>You prefer the light side of the force</h4>
+                <div class="form-group col-xs-3">
+                    <select class="form-control" id="question10">
+                        <option>1 (strongly agree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (strongly disagree)</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                Submit</button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        $('#submit').on("click", function (event) {
+            event.preventDefault();
+                if ($("#userName").val().trim() === '') {
+                alert('Please enter a valid name');
+            } else {
+                var userScores = [
+                        parseInt($("#question1").val().substring(0,1)),
+                        parseInt($("#question2").val().substring(0,1)),
+                        parseInt($("#question3").val().substring(0,1)),
+                        parseInt($("#question4").val().substring(0,1)),
+                        parseInt($("#question5").val().substring(0,1)),
+                        parseInt($("#question6").val().substring(0,1)),
+                        parseInt($("#question7").val().substring(0,1)),
+                        parseInt($("#question8").val().substring(0,1)),
+                        parseInt($("#question9").val().substring(0,1)),
+                        parseInt($("#question10").val().substring(0,1))
+                                  ]
+                
+                //create object for new users info and survey results
+                var newUser = {
+                    name: $("#userName").val().trim(),
+                    photo: $("#userPic").val().trim(),
+                    userScores
+                };
+                console.log(newUser);
+                var currentURL = window.location.origin;
+
+                $.post(currentURL + "/api/friends", newUser, function (data) {
+                });
+
+checkScores = function(){
+    console.log("Currently checking scores");
+    $.ajax({url: currentURL + "/api/friends", method: "GET"}).done(function(res){
+
+        console.log(res);
+    })
+   }
+checkScores();
+
+
+
+
+            }
+ // Here we get the location of the root page.
+      // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+      var currentURL = window.location.origin;
+
+
+        })
+    </script>
+</body>
+
+</html>
