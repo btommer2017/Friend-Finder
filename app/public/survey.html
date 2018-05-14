@@ -218,7 +218,13 @@
             event.preventDefault();
             if ($("#userName").val().trim() === '') {
                 alert('Please enter a valid name');
-            } else {
+            
+            // else if ($("#userPic").val().trim() === '') {
+            //     console.log("Hello World");
+            //     $("userPic").html("https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg")
+            //     return;
+            }
+             else {
                 //create a scores array to store users numerical value to each answer
                 var scores = [
                     $("#question1").val().substring(0, 1),
@@ -281,7 +287,13 @@
                         // NEED TO ADD A WAY TO SHOW THE CURRENT CLOSEST MATCH!!! 
                         $('#results-modal').modal('show');
                         $('#results-modal h2').html(matchResult);
-                        $('.modal-body').html('<img width ="350px" height="400px" src='+ charPhoto + '>');
+                        if (charPhoto === ''){
+                            $('.modal-body').html('<img width ="350px" height="350px" src='+ "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" + '>');
+                        }
+                        else {
+                        $('.modal-body').html('<img width ="350px" height="350px" src='+ charPhoto + '>');
+                        }
+                        $('#userSurvey')[0].reset();
                     })
                 }
                 checkScores();
