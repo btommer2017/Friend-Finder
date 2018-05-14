@@ -181,7 +181,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>
-                Submit Survey Answers</button>
+                Submit</button>
         </form>
     </div>
 
@@ -232,20 +232,27 @@
                             // Check all 10 score numbers for each character compared to the new users numbers to find who's most compatible
                             for (j = 0; j < res[i].scores.length; j++) {
                                 totalChecker.push(Math.abs(scores[j] - res[i].scores[j]));
+                                // console.log(res[i].name);
+                                //   console.log("Answer"+j+" = "+res[i].scores[j]);
+                                //   console.log(scores[j]);
+                                //   console.log(Math.abs(scores[j]-res[i].scores[j]));
+                                // console.log("Check score #" + j);
+                                // console.log(res[i].scores[j] - res[userNumber].userScores[j]);
                             }
-                            // find the combined value of all the differences in the totalChecker array
+                            // console.log(res[i].name);
+                            // console.log(totalChecker);
                             function getSum(total, num) {
                                 return total + num;
                             }
                             let totalSum = totalChecker.reduce(getSum);
-                            console.log(res[i].name + ": " + totalSum);
-                            // determine the closest match by looking for the lowest value of all characters totals
-                            if (totalSum <= userDifference) {
+                            console.log(totalSum);
+                            if (totalSum < userDifference) {
                                 charMatch = res[i].name;
                                 userDifference = totalSum;
                             }
                         }
-                        console.log("Your closest match is " + charMatch +"!");
+                        console.log("Your closest match is:");
+                        console.log(charMatch);
 
                     })
                 }
