@@ -15,10 +15,10 @@
         <h1 style="text-align: center; font-size: 50px;">FRIEND FINDER</h1>
         <hr>
         <hr>
-        <form role="form" id="userSurvey">
+        <form id="userSurvey">
             <h2>User Information:</h2>
             <div class="form-group">
-                <label for="usr">Name:</label>
+                <label for="user">Name:</label>
                 <input type="text" class="form-control" id="userName">
             </div>
             <div class="form-group">
@@ -26,9 +26,11 @@
                 <input type="text" class="form-control" id="userPic">
             </div>
             <hr>
+            <hr>
             <h2>
                 <strong>Provide responses to the following statements:</strong>
             </h2>
+            <!-- begin survey -->
             <div class="row col-xs-12 col-md-12 col-lg-12">
                 <h3>
                     <strong>Answer 1</strong>
@@ -108,7 +110,7 @@
                 <h3>
                     <strong>Answer 6</strong>
                 </h3>
-                <h4>You would prefer death via a sarlacc pit vs a light saber wound</h4>
+                <h4>You would prefer death via a sarlacc pit instead of a light saber wound</h4>
                 <div class="form-group col-xs-3">
                     <select class="form-control" id="question6">
                         <option>1 (strongly agree)</option>
@@ -179,10 +181,35 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+            <button type="submit" style="background-color: black" class="btn btn-primary btn-lg btn-block" id="submit">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                 Submit Survey Answers</button>
-        </form>
+            </form>
+            <br>
+        
+
+<!-- modal friend finder pop up -->
+        <div id="results-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h2 class="modal-title">
+                            <strong></strong>
+                        </h2>
+                    </div>
+                    <div class="modal-body">
+                        <h2 id="match-name"></h2>
+                        <img id="match-img" src="" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- modal div end -->
+
     </div>
 
 
@@ -192,6 +219,7 @@
             if ($("#userName").val().trim() === '') {
                 alert('Please enter a valid name');
             } else {
+                //create a scores array to store users numerical value to each answer
                 var scores = [
                     $("#question1").val().substring(0, 1),
                     $("#question2").val().substring(0, 1),
@@ -213,7 +241,7 @@
                 };
                 console.log(newUser);
                 var currentURL = window.location.origin;
-
+                //store new user with other predefined characters
                 $.post(currentURL + "/api/friends", newUser, function (data) {});
 
                 checkScores = function () {
@@ -222,7 +250,9 @@
                         url: currentURL + "/api/friends",
                         method: "GET"
                     }).done(function (res) {
+                        // find the total number of all predefined characters + already submitted user survey data
                         let userNumber = res.length - 1
+                        //create a userDifference number that can have a max value of 50
                         let userDifference = 50;
 
                         // Filter Data from friends.js for each character
@@ -242,11 +272,16 @@
                             // determine the closest match by looking for the lowest value of all characters totals
                             if (totalSum <= userDifference) {
                                 charMatch = res[i].name;
+                                charPhoto = res[i].photo;
                                 userDifference = totalSum;
                             }
                         }
-                        console.log("Your closest match is " + charMatch +"!");
-
+                        matchResult = "Your closest match is " + charMatch + "!";
+                        console.log(matchResult);
+                        // NEED TO ADD A WAY TO SHOW THE CURRENT CLOSEST MATCH!!! 
+                        $('#results-modal').modal('show');
+                        $('#results-modal h2').html(matchResult);
+                        $('.modal-body').html('<img width ="400px" src='+ charPhoto + '>');
                     })
                 }
                 checkScores();
