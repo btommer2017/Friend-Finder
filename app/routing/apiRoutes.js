@@ -1,5 +1,3 @@
-"use strict";
-
 // requirements
 var friendList = require('../data/friends.js');
 var path = require('path');

@@ -1,6 +1,6 @@
-// We need to include the path package to get the correct file path for our html
+// Inclue paths to the hmtl pages
 var path = require('path');
-// ROUTING
+// Routing
 module.exports = function(app){
 
 	app.get('/', function(request, result){
