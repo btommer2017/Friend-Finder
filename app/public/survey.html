@@ -184,11 +184,10 @@
             <button type="submit" style="background-color: black" class="btn btn-primary btn-lg btn-block" id="submit">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                 Submit Survey Answers</button>
-            </form>
-            <br>
-        
+        </form>
+        <br>
 
-<!-- modal friend finder pop up -->
+        <!-- modal friend finder pop up -->
         <div id="results-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -208,23 +207,25 @@
                 </div>
             </div>
         </div>
-<!-- modal div end -->
+        <!-- modal div end -->
 
     </div>
 
 
     <script type="text/javascript">
+    $("#userName").focus();
+  $('#userSurvey').on('keyup keypress', function(e) {
+          var keyCode = e.keyCode || e.which;
+          if (keyCode === 13) { 
+            e.preventDefault();
+            return false;
+          }
+        });
         $('#submit').on("click", function (event) {
             event.preventDefault();
             if ($("#userName").val().trim() === '') {
                 alert('Please enter a valid name');
-            
-            // else if ($("#userPic").val().trim() === '') {
-            //     console.log("Hello World");
-            //     $("userPic").html("https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg")
-            //     return;
-            }
-             else {
+            } else {
                 //create a scores array to store users numerical value to each answer
                 var scores = [
                     $("#question1").val().substring(0, 1),
@@ -287,18 +288,21 @@
                         // NEED TO ADD A WAY TO SHOW THE CURRENT CLOSEST MATCH!!! 
                         $('#results-modal').modal('show');
                         $('#results-modal h2').html(matchResult);
-                        if (charPhoto === ''){
-                            $('.modal-body').html('<img width ="350px" height="350px" src='+ "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" + '>');
-                        }
-                        else {
-                        $('.modal-body').html('<img width ="350px" height="350px" src='+ charPhoto + '>');
+                        if (charPhoto === '') {
+                            $('.modal-body').html('<img width ="350px" height="350px" src=' +
+                                "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" +
+                                '>');
+                        } else {
+                            $('.modal-body').html('<img width ="350px" height="350px" src=' +
+                                charPhoto + '>');
                         }
                         $('#userSurvey')[0].reset();
+                        $("#userName").focus();
                     })
                 }
                 checkScores();
             }
-
+            
         })
     </script>
 </body>
